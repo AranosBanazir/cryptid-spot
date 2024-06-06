@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
   router.get('/', async (req, res) => {
     try {
         const sightingsData = await Sighting.findAll({
-            include: [{model: Spotter, attributes: ['username']}]
+            include: [{model: Spotter, attributes: ['username']},{model: Cryptid, attributes: ['name']}]
         })
         const sightings = sightingsData.map((sighting => sighting.get({plain: true})))
         res.status(200).json(sightings)
