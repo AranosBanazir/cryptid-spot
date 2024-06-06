@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const spotterData = await Spotter.findOne({ where: { email: req.body.email } });
+    const spotterData = await Spotter.findOne({ where: { username: req.body.username } });
 
     if (!spotterData) {
       res
@@ -39,8 +39,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.Spotter_id = spotterData.id;
       req.session.logged_in = true;
-      
-      res.json({ Spotter: spotterData, message: 'You are now logged in!' });
+      res.status(200).send('You are now logged in!');
     });
 
   } catch (err) {
