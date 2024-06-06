@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Sequelize, Op } = require('sequelize');
 const { Spotter, Cryptid, Sighting } = require('../../models');
 
 router.post('/', async (req, res) => {
@@ -39,4 +40,24 @@ router.get('/:id', async (req, res) => {
         res.status(400).send('Server error retrieving Cryptid');
     }
 })
+
+router.get('/lib/:char', async (req, res) => {
+    try {
+        const char = req.params.char
+        const cryptidData = await Cryptid.findAll({
+            where: {
+                name: { [Op.startsWith]: char
+                }
+            }
+        })
+        const cryptids = cryptidData.map((cryptid => cryptid.get({plain:true})))
+        res.status(200).json(cryptids)
+    } catch (err) {
+        res.status(400).send('Server error retrieving Cryptids');
+    }
+})
+
+
+
+
 module.exports = router;
