@@ -4,6 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "watch:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",
+    "build:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --minify",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "seed": "node seeds/seed.js"
@@ -20,5 +22,8 @@
     "express-session": "^1.17.1",
     "pg": "^8.11.3",
     "sequelize": "^6.33.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
   }
 }
