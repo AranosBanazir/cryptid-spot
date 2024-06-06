@@ -3,7 +3,7 @@ const { Spotter, Cryptid, Sighting } = require('../models');
 
 const spotterData = require('./spotterData.json');
 const cryptidData = require('./cryptidData.json');
-const sightingData = require('./sightingData.json')
+const sightingData = require('./sightingData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -15,7 +15,7 @@ const seedDatabase = async () => {
 
   await Cryptid.bulkCreate(cryptidData);
 
-  await Sighting.bulkCreate(sightingData)
+  await Sighting.bulkCreate(sightingData);
 
   process.exit(0);
 };
