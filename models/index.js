@@ -1,5 +1,5 @@
 const Spotter = require('./Spotter');
-const Cryptid = require('./Cryptid');
+const Cryptid = require('./Cryptid')
 const Sighting = require('./Sighting')
 
 //Relationships
