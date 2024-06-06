@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const userRoutes = require('./userRoutes');
+const spotterRoutes = require('./spotterRoutes');
 
-router.use('/users', userRoutes);
+router.use('/spotters', spotterRoutes);
 
 module.exports = router;
