@@ -1,15 +1,21 @@
 const sequelize = require('../config/connection');
-const { User } = require('../models');
+const { Spotter, Cryptid, Sighting } = require('../models');
 
-const userData = require('./userData.json');
+const spotterData = require('./spotterData.json');
+const cryptidData = require('./cryptidData.json');
+const sightingData = require('./sightingData.json')
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  await User.bulkCreate(userData, {
+  await Spotter.bulkCreate(spotterData, {
     individualHooks: true,
     returning: true,
   });
+
+  await Cryptid.bulkCreate(cryptidData);
+
+  await Sighting.bulkCreate(sightingData)
 
   process.exit(0);
 };
