@@ -27,11 +27,13 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('login', {
+    logged_in: req.session.logged_in
+  });
 });
 
 
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect('/')
     return
@@ -39,29 +41,25 @@ router.get('/profile', (req, res) => {
 
   try {
     const id = req.session.Spotter_id
-    const profileData = Spotter.findByPk(id,{
-      include: {Sighting, Cryptid}
+    const profileData = await Spotter.findByPk(id ,{
+      attributes: {exclude: ['password']},
+      include: [{model: Sighting}, {model: Cryptid}],
     })
-    const spotterCryptidData = Cryptid.findAll({
-      where: {
-        spotter_id : id
-      }
-    })
-    const spotterSightingData = Sighting.findAll({
-      where: {
-        spotter_id : id
-      } , include: { model: Cryptid }
-    })
-    const spotterData = Spotter.findByPk(id, {
-      attributes: [username, avatar ]
-    })
-    const spotterCryptids = spotterCryptidData.map((cryptid => cryptid.get({plain: true})))
-    const spotterSightings = spotterSightingData.map((sighting => sighting.get({plain: true})))
-    const spotter = spotterData.get({plain: true})
+
+    const profile = profileData.get({plain:true})
+    console.log(profile)
     res.render('profile', {
-      spotter,
-      spotterCryptids,
-      spotterSightings,
+      profile,
+      logged_in: req.session.logged_in,
+    })
+  } catch (err) {
+    res.status(500).send('Server error')
+  }
+})
+
+router.get('/cryptid', (req, res) => {
+  try {
+    res.render('cryptid-library', {
       logged_in: req.session.logged_in,
     })
   } catch (err) {
