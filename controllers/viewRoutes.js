@@ -32,10 +32,10 @@ router.get('/login', (req, res) => {
 
 
 router.get('/profile', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/')
-    return
-  }
+  // if (!req.session.logged_in) {
+  //   res.redirect('/')
+  //   return
+  // }
 
   try {
     const id = req.session.Spotter_id
@@ -55,13 +55,13 @@ router.get('/profile', (req, res) => {
     // const spotterData = Spotter.findByPk(id, {
     //   attributes: [username, avatar ]
     // })
-    const spotterCryptids = spotterCryptidData.map((cryptid => cryptid.get({plain: true})))
-    const spotterSightings = spotterSightingData.map((sighting => sighting.get({plain: true})))
-    const spotter = spotterData.get({plain: true})
+    // const spotterCryptids = spotterCryptidData.map((cryptid => cryptid.get({plain: true})))
+    // const spotterSightings = spotterSightingData.map((sighting => sighting.get({plain: true})))
+    // const spotter = spotterData.get({plain: true})
     res.render('profile', {
-      spotter,
-      spotterCryptids,
-      spotterSightings,
+      // spotter,
+      // spotterCryptids,
+      // spotterSightings,
       logged_in: req.session.logged_in,
     })
   } catch (err) {
