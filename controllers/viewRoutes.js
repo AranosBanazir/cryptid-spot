@@ -12,6 +12,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/signup', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return
+  }
+
+  res.render('signup')
+})
+
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -30,19 +39,22 @@ router.get('/profile', (req, res) => {
 
   try {
     const id = req.session.Spotter_id
-    const spotterCryptidData = Cryptid.findAll({
-      where: {
-        spotter_id : id
-      }
+    const profileData = Spotter.findByPk(id,{
+      include: {Sighting, Cryptid}
     })
-    const spotterSightingData = Sighting.findAll({
-      where: {
-        spotter_id : id
-      } , include: { model: Cryptid }
-    })
-    const spotterData = Spotter.findByPk(id, {
-      attributes: [username, avatar ]
-    })
+    // const spotterCryptidData = Cryptid.findAll({
+    //   where: {
+    //     spotter_id : id
+    //   }
+    // })
+    // const spotterSightingData = Sighting.findAll({
+    //   where: {
+    //     spotter_id : id
+    //   } , include: { model: Cryptid }
+    // })
+    // const spotterData = Spotter.findByPk(id, {
+    //   attributes: [username, avatar ]
+    // })
     const spotterCryptids = spotterCryptidData.map((cryptid => cryptid.get({plain: true})))
     const spotterSightings = spotterSightingData.map((sighting => sighting.get({plain: true})))
     const spotter = spotterData.get({plain: true})
