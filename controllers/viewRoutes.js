@@ -34,14 +34,14 @@ router.get('/login', (req, res) => {
 
 
 router.get('/profile', async (req, res) => {
-  // if (!req.session.logged_in) {
-  //   res.redirect('/')
-  //   return
-  // }
+  if (!req.session.logged_in) {
+    res.redirect('/')
+    return
+  }
 
   try {
     const id = req.session.Spotter_id
-    const profileData = await Spotter.findByPk(2 ,{
+    const profileData = await Spotter.findByPk(id ,{
       attributes: {exclude: ['password']},
       include: [{model: Sighting}, {model: Cryptid}],
     })
