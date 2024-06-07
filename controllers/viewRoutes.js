@@ -34,14 +34,14 @@ router.get('/login', (req, res) => {
 
 
 router.get('/profile', async (req, res) => {
-  // if (!req.session.logged_in) {
-  //   res.redirect('/')
-  //   return
-  // }
+  if (!req.session.logged_in) {
+    res.redirect('/')
+    return
+  }
 
   try {
     const id = req.session.Spotter_id
-    const profileData = await Spotter.findByPk(2 ,{
+    const profileData = await Spotter.findByPk(id ,{
       attributes: {exclude: ['password']},
       include: [{model: Sighting}, {model: Cryptid}],
     })
@@ -50,6 +50,16 @@ router.get('/profile', async (req, res) => {
     console.log(profile)
     res.render('profile', {
       profile,
+      logged_in: req.session.logged_in,
+    })
+  } catch (err) {
+    res.status(500).send('Server error')
+  }
+})
+
+router.get('/cryptid', (req, res) => {
+  try {
+    res.render('cryptid-library', {
       logged_in: req.session.logged_in,
     })
   } catch (err) {
