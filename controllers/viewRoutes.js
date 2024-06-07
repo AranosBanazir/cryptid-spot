@@ -67,6 +67,16 @@ router.get('/cryptid', (req, res) => {
   }
 })
 
+router.get('/cryptid', (req, res) => {
+  try {
+    res.render('cryptid-library', {
+      logged_in: req.session.logged_in,
+    })
+  } catch (err) {
+    res.status(500).send('Server error')
+  }
+})
+
 router.get('/cryptid/:id', async (req, res) => {
   try {
     const id = req.params.id
