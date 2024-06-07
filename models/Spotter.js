@@ -38,6 +38,7 @@ Spotter.init(
     avatar: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "/images/avatars/default.png",
     },
   },
   {
