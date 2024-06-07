@@ -1,7 +1,18 @@
-<h1>{{name}}</h1>
+<h1>{{cryptid.name}}</h1>
+<p>{{cryptid.description}}</p>
+{{#if cryptid.sightings}}
+<h2>Recent Sightings</h2>
+{{#each cryptid.sightings}}
 <ul>
+<<<<<<< HEAD:views/partials/cryptid.handlebars
     <li>Date first spotted: {{date}}</li>
     <li>Last seen: {{location}}</li>
     <li>Spotted by: {{users}}</li>
+=======
+    <li>Date spotted: {{this.date}}</li>
+    <li>Description: {{this.content}}</li>
+    <li>Spotter:  {{this.spotter.username}}</li>
+>>>>>>> 00121c5813ab1c5e83a0939146fd43361ad977d7:views/cryptid.handlebars
 </ul>
-<p>{{cryptid_desc}}</p>
+{{/each}}
+{{/if}}
