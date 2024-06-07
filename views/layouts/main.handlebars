@@ -1,29 +1,56 @@
-<html lang="en">
+<html data-theme="dark" lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Registry</title>
-    <link rel="stylesheet" href="/css/output.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Registry</title>
+  <link rel="stylesheet" href="/css/output.css" />
+</head>
 
-  <body>
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        User Registry
-      </h1>
-      {{#if logged_in}}
-        <nav>
-          <button class="btn" id="logout">logout</button>
-        </nav>
-      {{/if}}
-    </header>
-    <main class="container container-fluid mt-5">
-      {{{body}}}
-    </main>
-    <footer>
-      
-    </footer>
+<body>
+  <header class="display-flex justify-space-between align-center p-2">
+    <div class="navbar bg-base-100">
+      <div class="flex-1">
+        <a class="btn btn-ghost text-xl">Cryptid Spotter</a>
+      </div>
+      <div class="flex-none">
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img alt="Tailwind CSS Navbar component"
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            </div>
+          </div>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <a class="justify-between">
+                Profile
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li><a>Settings</a></li>
+            <li><a>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <h1>
+      We smell
+    </h1>
+    {{#if logged_in}}
+    <nav>
+      <button class="btn" id="logout">logout</button>
+    </nav>
+    {{/if}}
+  </header>
+  <main class="container container-fluid mt-5">
+    {{{body}}}
+  </main>
+  <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+    <aside>
+      <p>Copyright © 2024 - All right reserved by Group Two</p>
+    </aside>
+  </footer>
 
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
