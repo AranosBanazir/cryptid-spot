@@ -8833,6 +8833,14 @@ html:has(.drawer-open.drawer-open) {
   height: 100%;
 }
 
+.h-\[500px\] {
+  height: 500px;
+}
+
+.h-full {
+  height: 100%;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -8861,6 +8869,10 @@ html:has(.drawer-open.drawer-open) {
   width: 20rem;
 }
 
+.w-\[500px\] {
+  width: 500px;
+}
+
 .w-\[this-is\\\\\] {
   width: this-is\\;
 }
@@ -8871,6 +8883,10 @@ html:has(.drawer-open.drawer-open) {
 
 .w-\[weird-and-invalid\] {
   width: weird-and-invalid;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .w-screen {
