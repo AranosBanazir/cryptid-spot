@@ -8833,13 +8833,6 @@ html:has(.drawer-open.drawer-open) {
   height: 100%;
 }
 
-.h-\[500px\] {
-  height: 500px;
-}
-
-.h-full {
-  height: 100%;
-}
 
 .h-screen {
   height: 100vh;
@@ -8885,13 +8878,6 @@ html:has(.drawer-open.drawer-open) {
   width: weird-and-invalid;
 }
 
-.w-full {
-  width: 100%;
-}
-
-.w-screen {
-  width: 100vw;
-}
 
 .flex-1 {
   flex: 1 1 0%;
@@ -10098,6 +10084,11 @@ html:has(.drawer-open.drawer-open) {
 
 .text-xl {
   font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 

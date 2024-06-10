@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="/css/reset.css" />
   </head>
 
+
   <body>
     <header
       class="display-flex justify-space-between align-center p-2 bg-base-300"
     >
       <div class="navbar bg-base-300">
         <div class="flex-1 bg-base-300">
-          <a class="btn btn-ghost text-xl">Cryptid Spotter</a>
+          <a href="/" class="btn btn-ghost text-xl">Cryptid Spotter</a>
         </div>
         <div class="flex-none">
           <div class="dropdown dropdown-end">
@@ -45,6 +46,18 @@
               <li><a>Logout</a></li>
             </ul>
           </div>
+
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <a href="/profile" class="justify-between">
+                Profile
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li><a>Settings</a></li>
+            <li><a>Logout</a></li>
+          </ul>
+
         </div>
       </div>
 
