@@ -6,8 +6,13 @@ router.post('/', async (req, res) => {
     const createSpotter = await Spotter.create(
       req.body
     )
-    res.status(200).send('User created succesfully')
+    req.session.save(() => {
+      req.session.Spotter_id = createSpotter.dataValues.id;
+      req.session.logged_in = true;
+      res.status(200).send('User created succesfully')
+    })
   } catch (err) {
+    console.log(err)
     res.status(400).send('Server error creating user');
   }
 })
@@ -35,7 +40,6 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-
     req.session.save(() => {
       req.session.Spotter_id = spotterData.id;
       req.session.logged_in = true;
@@ -43,6 +47,7 @@ router.post('/login', async (req, res) => {
     });
 
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });

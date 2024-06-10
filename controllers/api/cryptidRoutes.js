@@ -3,12 +3,15 @@ const { Sequelize, Op } = require('sequelize');
 const { Spotter, Cryptid, Sighting } = require('../../models');
 
 router.post('/', async (req, res) => {
+    const spotter_id = req.session.Spotter_id
+    const {name, description, region} = req.body
     try {
-      const createCryptid = await Cryptid.create(
-        req.body
-      )
+      const createCryptid = await Cryptid.create({
+        name, description, region, spotter_id
+      })
       res.status(200).send('Cryptid created succesfully')
     } catch (err) {
+        console.log(err)
       res.status(400).send('Server error creating Cryptid');
     }
   })
