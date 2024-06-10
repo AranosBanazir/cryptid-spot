@@ -7,7 +7,7 @@
     "watch:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",
     "build:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --minify",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "npx nodemon server.js",
     "seed": "node seeds/seed.js",
     "postinstall": "npm run build:css"
   },
@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.6",
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",
