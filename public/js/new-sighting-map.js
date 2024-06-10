@@ -30,7 +30,7 @@ initMap = async () => {
 
     infoWindow.close();
     infoWindow.setContent(`Pin dropped at: ${position.lat}, ${position.lng}`);
-    console.log(position.lat, position.lng)
+    console.log(position.lat, position.lng);
     infoWindow.open(sightingMarker.map, sightingMarker);
   });
 };

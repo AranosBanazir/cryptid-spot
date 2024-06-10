@@ -8,7 +8,6 @@ initMap = async (lat, lon) => {
     zoom: 10,
     center: position,
     mapId: 'f3d47e959491cfd9',
-    
   });
 };
 
@@ -26,7 +25,8 @@ setMarker = async (lat, lon, cryptid, spottedDate = "at some point.") => {
     background: "orange",
     borderColor: "red",
     glyphColor: "white",
-    scale: 2,
+    scale: 1.5,
+    
   });
 
   const marker = new AdvancedMarkerElement({
