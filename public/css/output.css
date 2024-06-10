@@ -8678,10 +8678,6 @@ html:has(.drawer-open.drawer-open) {
   margin-right: 30px;
 }
 
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
 .ml-\[20px\] {
   margin-left: 20px;
 }
@@ -8838,6 +8834,18 @@ html:has(.drawer-open.drawer-open) {
   height: 100vh;
 }
 
+.h-\[95\%\] {
+  height: 95%;
+}
+
+.min-h-\[80\%\] {
+  min-height: 80%;
+}
+
+.min-h-\[100\%\] {
+  min-height: 100%;
+}
+
 .w-10 {
   width: 2.5rem;
 }
@@ -8878,6 +8886,10 @@ html:has(.drawer-open.drawer-open) {
   width: weird-and-invalid;
 }
 
+
+.max-w-xs {
+  max-width: 20rem;
+}
 
 .flex-1 {
   flex: 1 1 0%;

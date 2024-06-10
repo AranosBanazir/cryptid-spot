@@ -6,10 +6,16 @@
     <title>User Registry</title>
     <link rel="stylesheet" href="/css/output.css" />
     <link rel="stylesheet" href="/css/reset.css" />
+    {{#if GKEY}}
+      <script
+        loading="async"
+        src="https://maps.googleapis.com/maps/api/js?key={{GKEY}}&loading=async"
+      >
+      </script>
+    {{/if}}
   </head>
 
-
-  <body>
+  <body class="flex flex-col min-h-[100%]">
     <header
       class="display-flex justify-space-between align-center p-2 bg-base-300"
     >
@@ -67,13 +73,11 @@
         </nav>
       {{/if}}
     </header>
-    <main class="container container-fluid mt-5">
+    <main class="container container-fluid mt-5 grow">
       {{{body}}}
     </main>
 
-    <footer
-      class="footer footer-center p-4 bg-base-300 text-base-content absolute bottom-0"
-    >
+    <footer class="footer footer-center p-4 bg-base-300 text-base-content">
       <aside>
         <p>Copyright © 2024 - All right reserved by Group Two</p>
       </aside>

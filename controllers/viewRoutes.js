@@ -91,6 +91,7 @@ router.get("/cryptid/:id", async (req, res) => {
 router.get("/new/sighting", (req, res) => {
   res.render("new-sighting", {
     logged_in: req.session.logged_in,
+    GKEY: process.env.GKEY
   });
 });
 
