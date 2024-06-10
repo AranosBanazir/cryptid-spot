@@ -1,10 +1,15 @@
-{{#each users as |user| }}
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <h2>{{{get_emoji}}} {{user.name}}</h2>
+<script
+  loading="async"
+  src="https://maps.googleapis.com/maps/api/js?key={{GKEY}}&loading=async"
+>
+</script>
+
+<div class="container w-full h-full flex flex-col items-center">
+
+  <div id="map" class="w-[500px] h-[500px] rounded-full">
+ 
   </div>
-  <div class="col-md-6">
-    <h3><a href="mailto:{{user.email}}">{{user.email}}</a></h3>
-  </div>
+
 </div>
-{{/each}}
+
+<script src="/js/map.js"></script>
