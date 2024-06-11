@@ -33,7 +33,11 @@
               <div class="w-10 rounded-full">
                 <img
                   alt="Spotter Avatar"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  {{#if avatar}}
+                  src="{{avatar}}"
+                  {{else}}
+                  src= "/images/avatars/ghost.png"
+                  {{/if}}
                 />
                 {{! User Avatar Image ^^ }}
               </div>
@@ -53,16 +57,6 @@
             </ul>
           </div>
 
-          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <a href="/profile" class="justify-between">
-                Profile
-                <span class="badge">New</span>
-              </a>
-            </li>
-            <li><a>Settings</a></li>
-            <li><a>Logout</a></li>
-          </ul>
 
         </div>
       </div>
