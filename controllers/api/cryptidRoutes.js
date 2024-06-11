@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Sequelize, Op } = require('sequelize');
+const { Op } = require('sequelize');
 const { Spotter, Cryptid, Sighting } = require('../../models');
 
 router.post('/', async (req, res) => {
