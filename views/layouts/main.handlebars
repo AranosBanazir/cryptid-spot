@@ -33,7 +33,11 @@
               <div class="w-10 rounded-full">
                 <img
                   alt="Spotter Avatar"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  {{#if avatar}}
+                  src="{{avatar}}"
+                  {{else}}
+                  src= "/images/avatars/veysel.png"
+                  {{/if}}
                 />
                 {{! User Avatar Image ^^ }}
               </div>

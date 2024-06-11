@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { Spotter, Cryptid, Sighting } = require("../models");
 const withAuth = require("../utils/auth");
+const { Op } = require('sequelize');
+
 
 router.get("/", async (req, res) => {
   try {
@@ -56,12 +58,24 @@ router.get("/profile", async (req, res) => {
   }
 });
 
-router.get("/cryptid", (req, res) => {
+router.get("/cryptid", async (req, res) => {
+  console.log(req.query)
   try {
+    const char = req.query.letter
+        const cryptidData = await Cryptid.findAll({
+            where: {
+                name: { [Op.startsWith]: char
+                }
+            }
+        })
+        const cryptids = cryptidData.map((cryptid => cryptid.get({plain:true})))
     res.render("cryptid-library", {
       logged_in: req.session.logged_in,
+      cryptids,
+      alphabet: 'abcdefghijklmnopqrsatuvwxyz'.toUpperCase().split('')
     });
   } catch (err) {
+    console.log(err)
     res.status(500).send("Server error");
   }
 });

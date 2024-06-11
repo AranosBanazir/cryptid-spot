@@ -1,11 +1,11 @@
-<div class="card w-96 bg-base-100 shadow-xl ">
+<div class="card w-96 bg-base-100 shadow-xl ml-[20px] ">
   <div class="card-body">
-    
-    <h1>{{cryptid.name}}</h1>
-    <p>{{cryptid.description}}</p>
-    {{#if cryptid.sightings}}
+    <p>test</p>
+    <h1>{{this.name}}</h1>
+    <p>{{this.description}}</p>
+    {{#if this.sightings}}
     <h2>Recent Sightings</h2>
-    {{#each cryptid.sightings}}
+    {{#each this.sightings}}
     <ul>
         <li>Date spotted: {{this.date}}</li>
         <li>Description: {{this.content}}</li>
@@ -16,5 +16,3 @@
     
   </div>
 </div>
-
-
