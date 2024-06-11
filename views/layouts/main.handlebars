@@ -46,26 +46,26 @@
               tabindex="0"
               class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
+            {{#if logged_in}}
               <li>
-                <a class="justify-between">
+                <a href="/profile" class="justify-between">
                   Profile
                   <span class="badge">New</span>
                 </a>
               </li>
-              <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
+              <li>
+                <a class="jusitfy-between" id="Logout">logout</a>
+              </li>
+              {{/if}}
+              {{#unless logged_in}}
+              <li><a href="/login">Login</a></li>
+              <li><a href="/signup">Signup</a></li>
+              {{/unless}}
             </ul>
           </div>
 
-
         </div>
       </div>
-
-      {{#if logged_in}}
-        <nav>
-          <button class="btn" id="logout">logout</button>
-        </nav>
-      {{/if}}
     </header>
     <main class="container container-fluid mt-5 grow">
       {{{body}}}
