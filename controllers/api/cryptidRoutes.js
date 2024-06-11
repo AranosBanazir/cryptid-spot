@@ -5,9 +5,10 @@ const { Spotter, Cryptid, Sighting } = require('../../models');
 router.post('/', async (req, res) => {
     const spotter_id = req.session.Spotter_id
     const {name, description, region} = req.body
+    const validatedName = name.charAt(0).toUpperCase() + name.slice(1)
     try {
       const createCryptid = await Cryptid.create({
-        name, description, region, spotter_id
+        name: validatedName , description, region, spotter_id
       })
       res.status(200).send('Cryptid created succesfully')
     } catch (err) {
