@@ -8829,6 +8829,9 @@ html:has(.drawer-open.drawer-open) {
   height: 100%;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
 
 .h-\[500px\] {
   height: 500px;
@@ -8901,7 +8904,6 @@ html:has(.drawer-open.drawer-open) {
 .w-full {
   width: 100%;
 }
-
 
 .w-screen {
   width: 100vw;
