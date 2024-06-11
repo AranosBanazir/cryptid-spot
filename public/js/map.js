@@ -7,7 +7,7 @@ initMap = async (lat, lon) => {
   map = new Map(document.querySelector("#map"), {
     zoom: 10,
     center: position,
-    mapId: 'f3d47e959491cfd9',
+    mapId: "f3d47e959491cfd9",
   });
 };
 
@@ -21,19 +21,20 @@ setMarker = async (lat, lon, cryptid, spottedDate = "at some point.") => {
     "marker"
   );
 
+  const imgTag = document.createElement("img");
+  imgTag.src = "/images/avatars/ufoGlyph.png";
   const pin = new PinElement({
     background: "orange",
     borderColor: "red",
     glyphColor: "white",
-    scale: 1.5,
-    
+    scale: 0.5,
   });
 
   const marker = new AdvancedMarkerElement({
     map: map, //using the globally set map var
     position: position,
     title: `${cryptid} was spotted here on ${spottedDate}`,
-    content: pin.element,
+    content: imgTag,
   });
 };
 

@@ -8909,28 +8909,10 @@ html:has(.drawer-open.drawer-open) {
   width: 100vw;
 }
 
-<<<<<<< HEAD
-.w-\[200px\] {
-  width: 200px;
-}
-
-.w-\[250px\] {
-  width: 250px;
-}
-
-=======
->>>>>>> cce91b3351b789f11e583aa16960cd6699571837
 .max-w-5xl {
   max-width: 64rem;
 }
 
-<<<<<<< HEAD
-.max-w-xs {
-  max-width: 20rem;
-}
-
-=======
->>>>>>> cce91b3351b789f11e583aa16960cd6699571837
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -9473,15 +9455,6 @@ html:has(.drawer-open.drawer-open) {
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-<<<<<<< HEAD
-.space-y-8 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
-}
-
-=======
->>>>>>> cce91b3351b789f11e583aa16960cd6699571837
 .space-x-\[300px\] > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(300px * var(--tw-space-x-reverse));
