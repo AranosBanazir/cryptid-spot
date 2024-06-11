@@ -8690,6 +8690,10 @@ html:has(.drawer-open.drawer-open) {
   margin-top: 1.25rem;
 }
 
+.mt-\[-80px\] {
+  margin-top: -80px;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -8837,6 +8841,10 @@ html:has(.drawer-open.drawer-open) {
   height: 100vh;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
 .min-h-\[100\%\] {
   min-height: 100%;
 }
@@ -8891,6 +8899,14 @@ html:has(.drawer-open.drawer-open) {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[200px\] {
+  width: 200px;
+}
+
+.w-\[250px\] {
+  width: 250px;
 }
 
 .max-w-5xl {
@@ -9447,6 +9463,18 @@ html:has(.drawer-open.drawer-open) {
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
+.space-x-\[300px\] > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(300px * var(--tw-space-x-reverse));
+  margin-left: calc(300px * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-\[30px\] > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(30px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(30px * var(--tw-space-y-reverse));
 }
 
 .space-y-reverse > :not([hidden]) ~ :not([hidden]) {

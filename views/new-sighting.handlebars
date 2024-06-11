@@ -1,28 +1,24 @@
-
-
-<div class="container w-full h-full flex flex-col items-center">
+<div class="container w-full h-full flex flex-rows justify-center items-center space-x-[300px]">
 
   <div id="map" class="w-[500px] h-[500px] rounded-box">
-
+    
   </div>
-  <button class="btn">Save the sighting</button>
-  <select class="select select-bordered w-full max-w-xs">
-  <option>Normal</option>
-  <option>Normal Apple</option>
-  <option>Normal Orange</option>
-  <option>Normal Tomato</option>
-</select>
-<textarea placeholder="Bio" class="textarea textarea-bordered textarea-md w-full max-w-xs" ></textarea>
-
+  <div class="w-[200px] h-[200px] rounded-box">
+    <div class="space-y-[30px] mt-[-80px]">
+      <select class="select select-bordered w-[250px]">
+      <option>Select The Sighted Cryptid</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select>
+    <textarea
+      placeholder="Description"
+      class="textarea textarea-bordered textarea-md w-[250px]"
+    ></textarea>
+    <button class="btn btn-primary w-[250px]">Upload Cryptid Image</button>
+    <button class="btn btn-secondary w-[250px]">Save The Sighting</button>
+    </div>
+  </div>
 </div>
-{{!-- <div>
-  <select class="select select-bordered w-full max-w-xs">
-  <option>Normal</option>
-  <option>Normal Apple</option>
-  <option>Normal Orange</option>
-  <option>Normal Tomato</option>
-</select>
-<textarea placeholder="Bio" class="textarea textarea-bordered textarea-md w-full max-w-xs" ></textarea>
-</div> --}}
 
 <script src="/js/new-sighting-map.js"></script>
