@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { where } = require("sequelize");
 const { Spotter } = require("../../models");
 
 router.post("/", async (req, res) => {
@@ -83,5 +84,21 @@ router.get("/:username", async (req, res) => {
 
   res.status(404).send()
 });
+
+router.put("/update", async (req, res) => {
+  console.log(req.body)
+  const id = req.session.Spotter_id
+  const { password, ...restofspotterdata} = req.body
+  
+  const spotterData =  password ? { ...restofspotterdata, password } : restofspotterdata
+  
+  const spotter = await Spotter.update(
+    spotterData
+    ,{
+    where : {id}
+  })
+  res.status(200).send('Spotter updated succesfully')
+})
+
 
 module.exports = router;

@@ -5,11 +5,22 @@ const { Op } = require("sequelize");
 
 router.get("/", async (req, res) => {
   try {
+    const id = req.session.Spotter_id
+    let profile
+    if (id){
+      const profileData = await Spotter.findByPk(id, {
+        attributes: { exclude: ["password"] },
+      });
+  
+       profile = profileData.get({ plain: true });
+    }
     res.render("homepage", {
       logged_in: req.session.logged_in,
       GKEY: process.env.GKEY,
+      profile
     });
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });
