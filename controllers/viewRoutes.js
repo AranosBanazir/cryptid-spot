@@ -1,14 +1,13 @@
 const router = require("express").Router();
 const { Spotter, Cryptid, Sighting } = require("../models");
 const withAuth = require("../utils/auth");
-const { Op } = require('sequelize');
-
+const { Op } = require("sequelize");
 
 router.get("/", async (req, res) => {
   try {
     res.render("homepage", {
       logged_in: req.session.logged_in,
-      GKEY: process.env.GKEY
+      GKEY: process.env.GKEY,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -54,33 +53,31 @@ router.get("/profile", async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    res.status(500).send("Server error");
+    console.log(req.session);
+    res.status(500).send(err);
   }
 });
 
 router.get("/cryptid", async (req, res) => {
-  console.log(req.query)
+  console.log(req.query);
   try {
-    const char = req.query.letter
-        const cryptidData = await Cryptid.findAll({
-            where: {
-                name: { [Op.startsWith]: char
-                }
-            }
-        })
-        const cryptids = cryptidData.map((cryptid => cryptid.get({plain:true})))
+    const char = req.query.letter;
+    const cryptidData = await Cryptid.findAll({
+      where: {
+        name: { [Op.startsWith]: char },
+      },
+    });
+    const cryptids = cryptidData.map((cryptid) => cryptid.get({ plain: true }));
     res.render("cryptid-library", {
       logged_in: req.session.logged_in,
       cryptids,
-      alphabet: 'abcdefghijklmnopqrsatuvwxyz'.toUpperCase().split('')
+      alphabet: "abcdefghijklmnopqrsatuvwxyz".toUpperCase().split(""),
     });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(500).send("Server error");
   }
 });
-
-
 
 router.get("/cryptid/:id", async (req, res) => {
   try {
@@ -105,8 +102,34 @@ router.get("/cryptid/:id", async (req, res) => {
 router.get("/new/sighting", (req, res) => {
   res.render("new-sighting", {
     logged_in: req.session.logged_in,
-    GKEY: process.env.GKEY
+    GKEY: process.env.GKEY,
   });
 });
+
+
+router.get('/profile/settings', async (req, res)=>{
+  if (!req.session.logged_in) {
+    res.redirect("/");
+    return;
+  }
+
+  try {
+    const id = req.session.Spotter_id;
+    const profileData = await Spotter.findByPk(id, {
+      attributes: { exclude: ["password"] },
+      include: [{ model: Sighting }, { model: Cryptid }],
+    });
+
+    const profile = profileData.get({ plain: true });
+    console.log(profile);
+    res.render("profile-settings", {
+      profile,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(req.session);
+    res.status(500).send(err);
+  }
+})
 
 module.exports = router;

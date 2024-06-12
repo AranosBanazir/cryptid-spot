@@ -1,34 +1,30 @@
-const router = require('express').Router();
-const { Spotter } = require('../../models');
+const router = require("express").Router();
+const { Spotter } = require("../../models");
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    const createSpotter = await Spotter.create(
-      req.body
-    )
+    const createSpotter = await Spotter.create(req.body);
     req.session.save(() => {
       req.session.Spotter_id = createSpotter.dataValues.id;
       req.session.logged_in = true;
-      res.status(200).send('User created succesfully')
-    })
+      res.status(200).send("User created succesfully");
+    });
   } catch (err) {
-    console.log(err)
-    res.status(400).send('Server error creating user');
+    console.log(err);
+    res.status(400).send("Server error creating user");
   }
-})
+});
 
-
-
-
-
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
-    const spotterData = await Spotter.findOne({ where: { username: req.body.username } });
+    const spotterData = await Spotter.findOne({
+      where: { username: req.body.username },
+    });
 
     if (!spotterData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
@@ -37,22 +33,21 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
     req.session.save(() => {
       req.session.Spotter_id = spotterData.id;
       req.session.logged_in = true;
-      res.status(200).send('You are now logged in!');
+      res.status(200).send("You are now logged in!");
     });
-
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(400).json(err);
   }
 });
 
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -60,6 +55,16 @@ router.post('/logout', (req, res) => {
   } else {
     res.status(404).end();
   }
+});
+
+router.get("/", async (req, res) => {
+  const spotter = await Spotter.findByPk(req.session.Spotter_id,{
+    attributes:{
+      exclude: ['password']
+    }
+  })
+
+  res.status(200).json(spotter)
 });
 
 module.exports = router;
