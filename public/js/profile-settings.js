@@ -90,7 +90,9 @@ const handleUpdate = async (e) =>{
     if (passwordInput.value !== ''){
         if (passwordConfirm.value !== passwordInput.value){
             errorAlert('Password and Password Confirmation do not match')
-            return
+            return 
+        } else {
+            profile.password = passwordInput.value
         }
     }
 
@@ -105,7 +107,7 @@ const handleUpdate = async (e) =>{
             return
         })
 
-    await fetch('/api/update', {
+    await fetch('/api/spotters/update', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

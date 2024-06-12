@@ -23,7 +23,9 @@
           <a href="/" class="btn btn-ghost text-xl">Cryptid Spotter</a>
         </div>
         <div class="flex-none">
-          <strong class="pe-3">{{profile.username}}</strong>
+          {{#if profile}}
+            <strong class="pe-3">{{profile.username}}</strong>
+          {{/if}}
           <div class="dropdown dropdown-end">
             <div
               tabindex="0"
@@ -35,11 +37,14 @@
                
                 <img
                   alt="Spotter Avatar"
-                  {{#if profile.avatar}}
-                  src="{{profile.avatar}}"
+                  {{#if profile}}
+                    {{#if profile.avatar}}
+                      src="{{profile.avatar}}"
+                    {{/if}}
                   {{else}}
-                  src= "/images/avatars/default.png"
+                    src= "/images/avatars/default.png"
                   {{/if}}
+                  
                 />
                 {{! User Avatar Image ^^ }}
               </div>
