@@ -1,7 +1,11 @@
-<div class="flex flex-col min-h-[100%] items-center justify-center">
+<div role="alert" class="alert alert-error hidden w-full" id="alert-div">
+  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+  <span id="err-msg"></span>
+</div>
+<div class="flex flex-col min-h-[100%] items-center justify-center min-w-[100%]">
     <div id="form-container" class="p-20 flex flex-col border-black">
-        <div class="dropdown dropdown-left flex">
-            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar mb-10" id="avatar-btn">
+        <div class="dropdown dropdown-left flex items-center mb-10">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar" id="avatar-btn">
                 <div class="w-10 rounded-full">
                     <img alt="Spotter Avatar" id="avatar"
                     {{#if profile.avatar}}
@@ -19,6 +23,7 @@
                     
                     </ul>
             </div>
+            <p class="self-center ml-3">Change Avatar</p>
         </div>
 
 
@@ -57,6 +62,7 @@
       Username:
       <input type="text" class="grow" id="username-update"/>
     </label>
+     <div class="divider divider-success">Update Password</div>
     <label class="input input-bordered flex items-center gap-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +78,7 @@
       <input type="password" class="grow" id="password-update"/>
     </label>
 
-    <label class="input input-bordered flex items-center gap-2">
+    <label class="input input-bordered flex items-center gap-2" id="confirm-label">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
@@ -87,7 +93,7 @@
       <input type="password" class="grow" id="password-confirm"/>
     </label>
 
-    <input type="submit" class="btn w-[20rem] signup-form self-center" value="Update Profile" id="update-btn">
+    <input type="submit" class="btn btn-success w-[20rem] signup-form self-center" value="Update Profile" id="update-btn">
   </form>
     </div>
 </div>

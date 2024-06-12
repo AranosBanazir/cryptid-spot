@@ -2,10 +2,13 @@ const emailInput = document.querySelector('#email-update')
 const usernameInput = document.querySelector('#username-update')
 const passwordInput = document.querySelector('#password-update')
 const passwordConfirm = document.querySelector('#password-confirm')
+const passwordConfirmLabel = document.querySelector('#confirm-label')
 const avatar = document.querySelector('#avatar')
 const avatarBtn = document.querySelector('#avatar-btn')
 const avatarContainer = document.querySelector('#avatar-container')
 const form       = document.querySelector('#profile-settings')
+const alertDiv = document.querySelector('#alert-div')
+const errMsg = document.querySelector('#err-msg')
 
 const avatars = [
     'alien',
@@ -62,6 +65,15 @@ const renderAvatars = () =>{
 }
 
 
+const errorAlert = (msg) =>{
+    alertDiv.classList.remove('hidden')
+    errMsg.innerHTML = msg
+    setTimeout(()=>{
+        alertDiv.classList.add('hidden')
+        errMsg.innerHTML = ''
+    },3000)
+}
+
 
 const avatarChange = ( e ) =>{
     e.preventDefault()
@@ -74,6 +86,25 @@ const avatarChange = ( e ) =>{
 const handleUpdate = async (e) =>{
     e.preventDefault()
 
+        //validation password
+    if (passwordInput.value !== ''){
+        if (passwordConfirm.value !== passwordInput.value){
+            errorAlert('Password and Password Confirmation do not match')
+            return
+        }
+    }
+
+
+    if (usernameInput.value !== profile.username)
+//checking the username does not already exists
+    fetch(`/api/spotters/${usernameInput.value}`)
+        .then(res=>{
+            if (res.status === 302){
+                errorAlert('Username already exists')
+            }
+            return
+        })
+
     await fetch('/api/update', {
         method: 'PUT',
         headers: {
@@ -83,10 +114,27 @@ const handleUpdate = async (e) =>{
     })
 }
 
+
+const passwordMatches = (e) =>{
+ if (passwordConfirm.value === ''){
+    passwordConfirmLabel.classList.add('input-bordered')
+    passwordConfirmLabel.setAttribute('style', '')
+}else if (e.target.value !== passwordInput.value){
+        passwordConfirmLabel.classList.remove('input-bordered')
+        passwordConfirmLabel.setAttribute('style', 'outline-style: none; border-color: red;')
+        
+    }else if (e.target.value === passwordInput.value){
+        passwordConfirmLabel.classList.add('input-bordered')
+        passwordConfirmLabel.setAttribute('style', 'outline-style: none; border-color: green;')
+    }
+}
+
+
     
     
 avatarBtn.addEventListener('click', avatarChange)
 form.addEventListener('submit', handleUpdate)
+passwordConfirm.addEventListener('input', passwordMatches)
 
 getProfileData()
 renderAvatars()

@@ -67,4 +67,21 @@ router.get("/", async (req, res) => {
   res.status(200).json(spotter)
 });
 
+
+router.get("/:username", async (req, res) => {
+
+  const spotter = await Spotter.findOne({
+    where:{
+      username: req.params.username
+    }
+  })
+
+  if (spotter){
+    res.status(302).send()
+    return
+  }
+
+  res.status(404).send()
+});
+
 module.exports = router;
