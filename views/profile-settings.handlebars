@@ -1,7 +1,7 @@
 <div class="flex flex-col min-h-[100%] items-center justify-center">
     <div id="form-container" class="p-20 flex flex-col border-black">
-        <div class="dropdown dropdown-left">
-            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar mb-10">
+        <div class="dropdown dropdown-left flex">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar mb-10" id="avatar-btn">
                 <div class="w-10 rounded-full">
                     <img alt="Spotter Avatar" id="avatar"
                     {{#if profile.avatar}}
@@ -12,19 +12,11 @@
                     />
                     {{! User Avatar Image ^^ }}
                 </div>
-                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        {{!-- <li class="w-[75px] h-[75px]"><a><img src="/images/avatars/bigfoot.png" alt="" class=""></a></li> --}}
-                        <div id="avatar-container" class="flex flex-wrap">
-                            <div class="w-[75px] h-[75px]">
-                                <a href="" class="rounded-full"><img src="/images/avatars/ufo.png" alt="avatar of a UFO"></a>
-                            </div>
-
-                            <div class="w-[75px] h-[75px]">
-                                <img src="/images/avatars/bigfoot.png" alt="avatar of a UFO">
-                            </div>
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-auto">
+                        <div id="avatar-container" class="grid grid-cols-3 w-[300px]">
                         </div>
                         
-                        {{!-- <li><a>Item 2</a></li> --}}
+                    
                     </ul>
             </div>
         </div>
@@ -37,7 +29,7 @@
 
 
 
-        <form class="space-y-8 signup-form flex flex-col">
+    <form class="space-y-8 signup-form flex flex-col" id="profile-settings">
     <label class="input input-bordered flex items-center gap-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +87,7 @@
       <input type="password" class="grow" id="password-confirm"/>
     </label>
 
-    <input type="submit" class="btn w-[20rem] signup-form self-center" value="Update Profile" >
+    <input type="submit" class="btn w-[20rem] signup-form self-center" value="Update Profile" id="update-btn">
   </form>
     </div>
 </div>
