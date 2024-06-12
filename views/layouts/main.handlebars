@@ -1,11 +1,10 @@
-<html data-theme="dark" lang="en">
+<html data-theme="halloween" lang="en">
 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Registry</title>
     <link rel="stylesheet" href="/css/output.css" />
-    <link rel="stylesheet" href="/css/reset.css" />
     {{#if GKEY}}
       <script
         loading="async"
@@ -15,7 +14,7 @@
     {{/if}}
   </head>
 
-  <body class="flex flex-col min-h-[100%]">
+  <body class="flex flex-col min-h-[100%] min-w-[100%]">
     <header
       class="display-flex justify-space-between align-center p-2 bg-base-300"
     >
@@ -24,19 +23,22 @@
           <a href="/" class="btn btn-ghost text-xl">Cryptid Spotter</a>
         </div>
         <div class="flex-none">
+          <strong class="pe-3">{{profile.username}}</strong>
           <div class="dropdown dropdown-end">
             <div
               tabindex="0"
               role="button"
               class="btn btn-ghost btn-circle avatar"
             >
+             
               <div class="w-10 rounded-full">
+               
                 <img
                   alt="Spotter Avatar"
-                  {{#if avatar}}
-                  src="{{avatar}}"
+                  {{#if profile.avatar}}
+                  src="{{profile.avatar}}"
                   {{else}}
-                  src= "/images/avatars/veysel.png"
+                  src= "/images/avatars/default.png"
                   {{/if}}
                 />
                 {{! User Avatar Image ^^ }}
@@ -67,7 +69,7 @@
         </div>
       </div>
     </header>
-    <main class="container container-fluid mt-5 grow">
+    <main class="container container-fluid mt-5 grow min-w-full">
       {{{body}}}
     </main>
 
