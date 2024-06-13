@@ -8882,6 +8882,11 @@ html:has(.drawer-open.drawer-open) {
   margin-right: 30px;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -8892,23 +8897,12 @@ html:has(.drawer-open.drawer-open) {
   margin-bottom: 1.25rem;
 }
 
-.mx-5 {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
-}
-
-.mx-3 {
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
-}
-
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
 .mb-10 {
   margin-bottom: 2.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .ml-3 {
@@ -8917,10 +8911,6 @@ html:has(.drawer-open.drawer-open) {
 
 .ml-\[20px\] {
   margin-left: 20px;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
 }
 
 .mt-2 {
@@ -8937,6 +8927,10 @@ html:has(.drawer-open.drawer-open) {
 
 .mt-\[-80px\] {
   margin-top: -80px;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .box-border {
@@ -10976,6 +10970,79 @@ html:has(.drawer-open.drawer-open) {
     .sm\:container {
       max-width: 1536px;
     }
+  }
+
+  .sm\:divider-horizontal {
+    flex-direction: column;
+  }
+
+  .sm\:divider-horizontal:before {
+    height: 100%;
+    width: 0.125rem;
+  }
+
+  .sm\:divider-horizontal:after {
+    height: 100%;
+    width: 0.125rem;
+  }
+
+  .sm\:divider-horizontal {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: auto;
+    width: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:divider-horizontal {
+    flex-direction: column;
+  }
+
+  .md\:divider-horizontal:before {
+    height: 100%;
+    width: 0.125rem;
+  }
+
+  .md\:divider-horizontal:after {
+    height: 100%;
+    width: 0.125rem;
+  }
+
+  .md\:divider-horizontal {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: auto;
+    width: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:divider-horizontal {
+    flex-direction: column;
+  }
+
+  .lg\:divider-horizontal:before {
+    height: 100%;
+    width: 0.125rem;
+  }
+
+  .lg\:divider-horizontal:after {
+    height: 100%;
+    width: 0.125rem;
+  }
+
+  .lg\:divider-horizontal {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: auto;
+    width: 1rem;
   }
 }
 
