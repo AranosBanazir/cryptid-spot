@@ -1,7 +1,6 @@
 const cryptidForm = document.getElementById('cryptid-create-form')
-const imgPreview  = document.querySelector('#img-preview')
 
-let cryptidImage;
+let cryptidImage = '';
 
 cryptidForm.addEventListener('submit', async (e) => {
     e.preventDefault()
@@ -16,7 +15,7 @@ cryptidForm.addEventListener('submit', async (e) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({name, description, region})
+            body: JSON.stringify({name, description, region, image: cryptidImage})
         }
     )
     } catch (err) {
@@ -29,7 +28,6 @@ cryptidForm.addEventListener('submit', async (e) => {
 const cloudName = "cryptid"; 
 const uploadPreset = "cryptid";
 
-console.log(cloudinary, cloudinary.createUploadWidget())
 
 const myWidget = cloudinary.createUploadWidget(
   {
@@ -38,20 +36,35 @@ const myWidget = cloudinary.createUploadWidget(
     showAdvancedOptions: true, 
     sources: ["local", "url", "camera"],
     multiple: false,
-    theme: "purple",
-    inlineContainer: document.querySelector('#upload-div')
+    inlineContainer: document.querySelector('#upload-div'),
+    styles:{
+        palette: {
+          window: "dimgrey",
+          windowBorder: "black",
+          tabIcon: "black",
+          menuIcons: "black",
+          textDark: "#000000",
+          textLight: "#FFFFFF",
+          link:  "cyan",
+          action:  "#FF620C",
+          inactiveTabIcon: "#0E2F5A",
+          error: "#F44235",
+          inProgress: "#0078FF",
+          complete: "#20B832",
+          sourceBg: "black"
+        },
+        frame: {
+          background: "#FF0000"
+        },
      
+    }
   },
   (error, result) => {
     if (!error && result && result.event === "success") {
       cryptidImage = result.info.secure_url
-      imgPreview.innerHTML = `
-      <h2 class='font-bold text-xl'>Cryptid Preview:</h2>
-      <img src="${cryptidImage}">`
       console.log(result.info)
-    }
   }
-);
+});
 
 document.getElementById("upload-btn").addEventListener(
   "click",

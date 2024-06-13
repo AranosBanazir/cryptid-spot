@@ -55,7 +55,9 @@ router.get("/profile", async (req, res) => {
     const id = req.session.spotter_id;
     const profileData = await Spotter.findByPk(id, {
       attributes: { exclude: ["password"] },
-      include: [{ model: Sighting }, { model: Cryptid }],
+      include: [{ model: Sighting,
+        include: [{model:Cryptid, attributes: ['name']}]
+      }, { model: Cryptid }],
     });
 
     const profile = profileData.get({ plain: true });

@@ -2,7 +2,7 @@
 </script>
 
 <div class="flex flex-col w-screen lg:flex-row md:flex-row sm:max-w-screen justify-center items-center">
-  <div class="grid flex-grow w-[100%] h-[100%] mx-[30px] p-[20px] card bg-base-300 rounded-box">
+  <div class="w-[100%] h-[100%] mx-[30px] p-[20px] card bg-base-300 rounded-box">
     <div class="flex jusitfy-between w-[100%] mb-5 ">
     <h2 class="w-[100%]">My Cryptids</h2>
     <button id="upload-btn" class="btn btn-outline btn-primary" onclick="cryptid_form_modal.showModal()">Add a Cryptid</button>
@@ -13,12 +13,17 @@
       {{#if profile.cryptids}}
       {{#each profile.cryptids}}
       <div class="card w-11/12 mb-10 bg-base-100 shadow-xl ml-[20px] ">
-        <div class="card-body">
+        <div class="card-body flex flex-row">
+          <div class="flex flex-col">
           <a href='/cryptid/{{this.id}}'>
             <h1>{{this.name}}</h1>
           </a>
           <p>{{this.description}}</p>
-          
+          </div>
+
+          <div>
+            <img src="{{this.image}}" alt="">
+          </div>
 
         </div>
       </div>
@@ -29,8 +34,16 @@
     </div>
   </div>
 
-  <div class="grid flex-grow w-[100%] h-[100%] mx-[30px] p-[20px] card bg-base-300 rounded-box place-items-center">
+  <div class="flex flex-col w-[100%] h-[100%] bg-base-300 rounded-box">
+    <h2 class="self-center mt-5">My Sightings</h2>
 
+    <div class="container ml-10 mt-10 grid grid-cols-2" id="sightings-container">
+      {{#each profile.sightings}}
+        
+        {{> sighting-card}}
+
+      {{/each}}
+    </div>
   </div>
 </div>
 
@@ -39,25 +52,26 @@
   
     <div class="modal-box w-11/12 max-w-5xl">
     <div class="grid grid-cols-2">
-      <div>
+      <div class="mr-5">
       <h3 class="font-bold text-lg">Create a Cryptid</h3>
-      <form class="space-y-8 cryptid-create-form" id="cryptid-create-form">
+      <form class="space-y-8 cryptid-create-form flex flex-col" id="cryptid-create-form">
         <label class="input input-bordered flex items-center gap-2">
           Cryptid name:
           <input type="text" class="grow" id="cryptid-name-create" />
         </label>
-        <textarea placeholder="Description" class="textarea textarea-bordered textarea-md w-full"
+        <textarea placeholder="Description" rows="10" class="textarea textarea-bordered textarea-md w-full"
           id="cryptid-desc-create"></textarea>
         <label class="input input-bordered flex items-center gap-2">
           Region of origin:
           <input type="text" class="grow" id="cryptid-region-create" />
         </label>
 
-        <input type="submit" class="btn w-[20rem] cryptid-create-form" id="upload-btn" value="Create Cryptid"/>
+        <input type="submit" class="btn w-[20rem] cryptid-create-form self-center" id="upload-btn" value="Create Cryptid"/>
      
      </form>
       </div>
-      <div class="rounded" id="upload-div">
+
+      <div class="rounded-lg" id="upload-div">
 
 
       </div>
