@@ -13,6 +13,7 @@ router.post("/", async (req, res) => {
     const createSightings = await Sighting.create(newSighting);
     res.status(201).send("Sighting created succesfully");
   } catch (err) {
+    console.log(err)
     res.status(400).send("Server error creating sighting");
   }
 });
