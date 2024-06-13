@@ -3,7 +3,7 @@ const { Op } = require('sequelize');
 const { Spotter, Cryptid, Sighting } = require('../../models');
 
 router.post('/', async (req, res) => {
-    const spotter_id = req.session.Spotter_id
+    const spotter_id = req.session.spotter_id
     const {name, description, region} = req.body
     const validatedName = name.charAt(0).toUpperCase() + name.slice(1)
     try {
