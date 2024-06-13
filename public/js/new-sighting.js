@@ -1,9 +1,12 @@
 const cryptidSelector = document.querySelector("#cryptid-selector");
 const saveBtn = document.querySelector("#save-btn");
 const contentInput = document.querySelector("#contentInput");
+const imgPreview   = document.querySelector('#img-preview')
 
 let lat;
 let lon;
+
+let cryptidImage = ''
 
 navigator.geolocation.getCurrentPosition((position) => {
   lat = position.coords.latitude;
@@ -74,6 +77,7 @@ function handleSaveCryptid(e) {
     content: contentInput.value,
     lat,
     lon,
+    image: cryptidImage
   };
 
   fetch("/api/sightings", {
@@ -88,6 +92,46 @@ function handleSaveCryptid(e) {
     }
   });
 }
+
+
+const cloudName = "cryptid"; 
+const uploadPreset = "cryptid";
+
+
+
+const myWidget = cloudinary.createUploadWidget(
+  {
+    cloudName: cloudName,
+    uploadPreset: uploadPreset,
+    showAdvancedOptions: true, 
+    sources: ["local", "url", "camera"],
+    multiple: false,
+    clientAllowedFormats: ["images"], 
+    theme: "purple", 
+  },
+  (error, result) => {
+    if (!error && result && result.event === "success") {
+      cryptidImage = result.info.secure_url
+      imgPreview.innerHTML = `
+      <h2 class='font-bold text-xl'>Cryptid Preview:</h2>
+      <img src="${cryptidImage}">`
+      console.log(result.info)
+    }
+  }
+);
+
+document.getElementById("upload-btn").addEventListener(
+  "click",
+  function () {
+    myWidget.open();
+  },
+  false
+);
+
+
+
+
+
 
 saveBtn.addEventListener("click", handleSaveCryptid);
 

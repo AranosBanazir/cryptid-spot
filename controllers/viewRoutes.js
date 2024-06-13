@@ -5,6 +5,7 @@ const { Op } = require("sequelize");
 
 router.get("/", async (req, res) => {
   try {
+    console.log(req.session)
     const id = req.session.Spotter_id
     let profile
     if (id){
