@@ -8882,6 +8882,21 @@ html:has(.drawer-open.drawer-open) {
   margin-right: 30px;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -8912,6 +8927,10 @@ html:has(.drawer-open.drawer-open) {
 
 .mt-\[-80px\] {
   margin-top: -80px;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .box-border {
@@ -10111,6 +10130,10 @@ html:has(.drawer-open.drawer-open) {
   border-width: 1px;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
 .border-x {
   border-left-width: 1px;
   border-right-width: 1px;
@@ -10172,6 +10195,11 @@ html:has(.drawer-open.drawer-open) {
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.border-slate-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(241 245 249 / var(--tw-border-opacity));
 }
 
 .bg-\[rgb\(255\2c 0\2c 0\)\] {
@@ -11033,6 +11061,11 @@ html:has(.drawer-open.drawer-open) {
       }
     }
   }
+}
+
+.hover\:bg-sky-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 105 161 / var(--tw-bg-opacity));
 }
 
 .hover\:font-bold:hover {

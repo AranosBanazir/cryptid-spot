@@ -1,93 +1,95 @@
 <html data-theme="halloween" lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Registry</title>
-    <link rel="stylesheet" href="/css/output.css" />
-    {{#if GKEY}}
-      <script
-        loading="async"
-        src="https://maps.googleapis.com/maps/api/js?key={{GKEY}}&loading=async"
-      >
-      </script>
-    {{/if}}
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Registry</title>
+  <link rel="stylesheet" href="/css/output.css" />
+  {{#if GKEY}}
+  <script loading="async" src="https://maps.googleapis.com/maps/api/js?key={{GKEY}}&loading=async">
+  </script>
+  {{/if}}
+</head>
 
-  <body class="flex flex-col min-h-[100%] min-w-[100%]">
-    <header
-      class="display-flex justify-space-between align-center p-2 bg-base-300"
-    >
-      <div class="navbar bg-base-300">
-        <div class="flex-1 bg-base-300">
-          <a href="/" class="btn btn-ghost text-xl">Cryptid Spotter</a>
-        </div>
-        <div class="flex-none">
-          {{#if profile}}
-            <strong class="pe-3">{{profile.username}}</strong>
-          {{/if}}
-          <div class="dropdown dropdown-end">
-            <div
-              tabindex="0"
-              role="button"
-              class="btn btn-ghost btn-circle avatar"
-            >
-             
-              <div class="w-10 rounded-full">
-               
-                <img
-                  alt="Spotter Avatar"
-                  {{#if profile}}
-                    {{#if profile.avatar}}
-                      src="{{profile.avatar}}"
-                    {{/if}}
-                  {{else}}
-                    src= "/images/avatars/default.png"
-                  {{/if}}
-                  
-                />
-                {{! User Avatar Image ^^ }}
-              </div>
-            </div>
-            <ul
-              tabindex="0"
-              class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-            {{#if logged_in}}
-              <li>
-                <a href="/profile" class="justify-between">
-                  Profile
-                  <span class="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a class="jusitfy-between" id="Logout">logout</a>
-              </li>
-              {{/if}}
-              {{#unless logged_in}}
-              <li><a href="/login">Login</a></li>
-              <li><a href="/signup">Signup</a></li>
-              {{/unless}}
-            </ul>
-          </div>
+<body class="flex flex-col min-h-[100%] min-w-[100%]">
+  <header class="display-flex justify-space-between align-center p-2 bg-base-300">
+    <div class="navbar bg-base-300">
+      <div class="flex-1 bg-base-300">
+        <a href="/" class="btn btn-ghost text-xl">Cryptid Spotter</a>
+      {{#if logged_in}}
+        <a class="btn btn-primary" href="/new/sighting">New Sighting</a>
 
-        </div>
+      {{/if}}
       </div>
-    </header>
-    <main class="container container-fluid mt-5 grow min-w-full">
-      {{{body}}}
-    </main>
+      <div class="flex-none">
+        {{#if logged_in}}
+        <ul>
+          <a class="btn mx-2" href="/api/sightings">Sighting</a>
+          <a class="btn mx-2" href="/cryptid">Library</a>
+          <a class="btn mx-2" href="/api/cryptids">Cryptids</a>
+          <a class="btn mx-2" href="/profile">Profile</a>
+          <a class="btn mx-2" id="logout">Logout</a>
+        <strong class="pe-3">{{profile.username}}</strong>
+        </ul>
+        {{/if}}
+        {{#unless logged_in}}
+        <ul>
+          <a class="btn mx-2" href="/api/sightings">Sighting</a>
+          <a class="btn mx-2" href="/cryptid">Library</a>
+          <a class="btn mx-2" href="/api/cryptids">Cryptids</a>
+          <a class="btn mx-2" href="/signup">Signup</a>
+          <a class="btn mx-2" href="/login">Login</a>
+        
+        </ul>
+        {{/unless}}
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
 
-    <footer class="footer footer-center p-4 bg-base-300 text-base-content">
-      <aside>
-        <p>Copyright © 2024 - All right reserved by Group Two</p>
-      </aside>
+            <div class="w-10 rounded-full">
 
-    </footer>
+              <img alt="Spotter Avatar" {{#if profile.avatar}} src="{{profile.avatar}}" {{else}}
+                src="/images/avatars/default.png" {{/if}} />
+              {{! User Avatar Image ^^ }}
 
-    {{#if logged_in}}
-      <script src="/js/logout.js"></script>
-    {{/if}}
-  </body>
+            </div>
+          </div>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            {{#if logged_in}}
+            <li>
+              <a href="/profile" class="justify-between">
+                Profile
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li>
+              <a class="jusitfy-between" id="Logout">logout</a>
+            </li>
+            {{/if}}
+            {{#unless logged_in}}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
+            {{/unless}}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </header>
+  <main class="flex justify-center mt-5 grow min-w-full mx-auto">
+    {{{body}}}
+  </main>
+  
+  <footer class="footer footer-center p-4 bg-base-300 text-base-content mt-10">
+    <aside>
+      <p>Copyright © 2024 - All right reserved by Group Two</p>
+    </aside>
+
+  </footer>
+
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+  <script src="/public/js/index.js"></script>
+</body>
 
 </html>
