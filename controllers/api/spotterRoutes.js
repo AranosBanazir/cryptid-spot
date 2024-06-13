@@ -6,7 +6,7 @@ router.post("/", async (req, res) => {
   try {
     const createSpotter = await Spotter.create(req.body);
     req.session.save(() => {
-      req.session.Spotter_id = createSpotter.dataValues.id;
+      req.session.spotter_id = createSpotter.dataValues.id;
       req.session.logged_in = true;
       res.status(200).send("User created succesfully");
     });
@@ -38,7 +38,7 @@ router.post("/login", async (req, res) => {
       return;
     }
     req.session.save(() => {
-      req.session.Spotter_id = spotterData.id;
+      req.session.spotter_id = spotterData.id;
       req.session.logged_in = true;
       res.status(200).send("You are now logged in!");
     });
@@ -59,7 +59,7 @@ router.post("/logout", (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const spotter = await Spotter.findByPk(req.session.Spotter_id,{
+  const spotter = await Spotter.findByPk(req.session.spotter_id,{
     attributes:{
       exclude: ['password']
     }
@@ -87,7 +87,7 @@ router.get("/:username", async (req, res) => {
 
 router.put("/update", async (req, res) => {
   console.log(req.body)
-  const id = req.session.Spotter_id
+  const id = req.session.spotter_id
   const { password, ...restofspotterdata} = req.body
   
   const spotterData =  password ? { ...restofspotterdata, password } : restofspotterdata
