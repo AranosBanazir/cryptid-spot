@@ -51,6 +51,40 @@
                 src="/images/avatars/default.png" {{/if}} />
               {{! User Avatar Image ^^ }}
 
+
+  <body class="flex flex-col min-h-[100%] min-w-[100%]">
+    <header
+      class="display-flex justify-space-between align-center p-2 bg-base-300"
+    >
+      <div class="navbar bg-base-300">
+        <div class="flex-1 bg-base-300">
+          <a href="/" class="btn btn-ghost text-xl">Cryptid Spotter</a>
+        </div>
+        <div class="flex-none">
+          {{#if profile}}
+            <strong class="pe-3">{{profile.username}}</strong>
+          {{/if}}
+          <div class="dropdown dropdown-end">
+            <div
+              tabindex="0"
+              role="button"
+              class="btn btn-ghost btn-circle avatar"
+            >
+             
+              <div class="w-10 rounded-full">
+               
+                <img
+                  alt="Spotter Avatar"
+                  {{#if profile}}
+                      src="{{profile.avatar}}"
+                  {{else}}
+                    src= "/images/avatars/default.png"
+                  {{/if}}
+                  
+                />
+                {{! User Avatar Image ^^ }}
+              </div>
+
             </div>
           </div>
           <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">

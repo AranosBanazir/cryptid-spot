@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
     const sightings = sightingsData.map((sighting) =>
       sighting.get({ plain: true })
     );
-    res.status(200).json(sightings);
+    res.status(200).send(sightings);
   } catch (err) {
     res.status(400).send("Server error retrieving Sightings");
   }

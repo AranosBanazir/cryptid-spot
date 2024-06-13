@@ -46,7 +46,6 @@ Sighting.init(
   },
   {
     sequelize,
-    timestamps: false,
     underscored: true,
     modelName: "sighting",
   }
