@@ -32,6 +32,11 @@ Cryptid.init(
         key: "id",
       },
     },
+    image:{
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: ''
+    }
   },
   {
     sequelize,

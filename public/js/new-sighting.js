@@ -52,7 +52,7 @@ initMap = async () => {
   });
 
   const imgTag = document.createElement("img");
-  imgTag.src = "/images/avatars/ufoGlyph.png";
+  imgTag.src = "/images/avatars/steps.png";
 
   const sightingMarker = new AdvancedMarkerElement({
     map,
@@ -106,7 +106,6 @@ const myWidget = cloudinary.createUploadWidget(
     showAdvancedOptions: true, 
     sources: ["local", "url", "camera"],
     multiple: false,
-    clientAllowedFormats: ["images"], 
     theme: "purple", 
   },
   (error, result) => {

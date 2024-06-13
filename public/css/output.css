@@ -8829,10 +8829,6 @@ html:has(.drawer-open.drawer-open) {
   z-index: 1;
 }
 
-.order-first {
-  order: -9999;
-}
-
 .float-start {
   float: inline-start;
 }
@@ -8935,6 +8931,18 @@ html:has(.drawer-open.drawer-open) {
 
 .mt-\[-80px\] {
   margin-top: -80px;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.mr-5 {
+  margin-right: 1.25rem;
+}
+
+.ml-10 {
+  margin-left: 2.5rem;
 }
 
 .box-border {
@@ -9534,6 +9542,10 @@ html:has(.drawer-open.drawer-open) {
   grid-auto-flow: column dense;
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -10068,6 +10080,10 @@ html:has(.drawer-open.drawer-open) {
   border-radius: 9999px;
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
 .rounded-b {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -10219,6 +10235,11 @@ html:has(.drawer-open.drawer-open) {
 .bg-base-300 {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+}
+
+.bg-red-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 
 .decoration-slice {
@@ -10978,79 +10999,6 @@ html:has(.drawer-open.drawer-open) {
     .sm\:container {
       max-width: 1536px;
     }
-  }
-
-  .sm\:divider-horizontal {
-    flex-direction: column;
-  }
-
-  .sm\:divider-horizontal:before {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .sm\:divider-horizontal:after {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .sm\:divider-horizontal {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    height: auto;
-    width: 1rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:divider-horizontal {
-    flex-direction: column;
-  }
-
-  .md\:divider-horizontal:before {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .md\:divider-horizontal:after {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .md\:divider-horizontal {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    height: auto;
-    width: 1rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:divider-horizontal {
-    flex-direction: column;
-  }
-
-  .lg\:divider-horizontal:before {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .lg\:divider-horizontal:after {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .lg\:divider-horizontal {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    height: auto;
-    width: 1rem;
   }
 }
 
