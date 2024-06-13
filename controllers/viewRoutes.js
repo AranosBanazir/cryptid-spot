@@ -6,7 +6,7 @@ const { Op } = require("sequelize");
 router.get("/", async (req, res) => {
   try {
     console.log(req.session)
-    const id = req.session.Spotter_id
+    const id = req.session.spotter_id
     let profile
     if (id){
       const profileData = await Spotter.findByPk(id, {
@@ -52,7 +52,7 @@ router.get("/profile", async (req, res) => {
   }
 
   try {
-    const id = req.session.Spotter_id;
+    const id = req.session.spotter_id;
     const profileData = await Spotter.findByPk(id, {
       attributes: { exclude: ["password"] },
       include: [{ model: Sighting }, { model: Cryptid }],
@@ -126,7 +126,7 @@ router.get('/profile/settings', async (req, res)=>{
   }
 
   try {
-    const id = req.session.Spotter_id;
+    const id = req.session.spotter_id;
     const profileData = await Spotter.findByPk(id, {
       attributes: { exclude: ["password"] },
       include: [{ model: Sighting }, { model: Cryptid }],
