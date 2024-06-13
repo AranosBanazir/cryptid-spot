@@ -3,7 +3,7 @@ const { Spotter, Cryptid, Sighting } = require("../../models");
 
 router.post("/", async (req, res) => {
   const newSighting = {
-    spotter_id: req.session.Spotter_id,
+    spotter_id: req.session.spotter_id,
     ...req.body,
   };
 

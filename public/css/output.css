@@ -8829,6 +8829,7 @@ html:has(.drawer-open.drawer-open) {
   z-index: 1;
 }
 
+<<<<<<< HEAD
 .z-0 {
   z-index: 0;
 }
@@ -8843,6 +8844,10 @@ html:has(.drawer-open.drawer-open) {
 
 .-z-\[-1000\] {
   z-index: 1000;
+=======
+.order-first {
+  order: -9999;
+>>>>>>> 17a446620adcb5a6e488cbf2c005aa82b15dc672
 }
 
 .float-start {
@@ -8945,10 +8950,13 @@ html:has(.drawer-open.drawer-open) {
   margin-top: -80px;
 }
 
+<<<<<<< HEAD
 .mb-5 {
   margin-bottom: 1.25rem;
 }
 
+=======
+>>>>>>> 17a446620adcb5a6e488cbf2c005aa82b15dc672
 .box-border {
   box-sizing: border-box;
 }
