@@ -24,9 +24,7 @@
       <div class="flex-none">
         {{#if logged_in}}
         <ul>
-          <a class="btn mx-2" href="/api/sightings">Sighting</a>
           <a class="btn mx-2" href="/cryptid">Library</a>
-          <a class="btn mx-2" href="/api/cryptids">Cryptids</a>
           <a class="btn mx-2" href="/profile">Profile</a>
           <a class="btn mx-2" id="logout">Logout</a>
         <strong class="pe-3">{{profile.username}}</strong>
@@ -34,9 +32,7 @@
         {{/if}}
         {{#unless logged_in}}
         <ul>
-          <a class="btn mx-2" href="/api/sightings">Sighting</a>
           <a class="btn mx-2" href="/cryptid">Library</a>
-          <a class="btn mx-2" href="/api/cryptids">Cryptids</a>
           <a class="btn mx-2" href="/signup">Signup</a>
           <a class="btn mx-2" href="/login">Login</a>
         
@@ -66,6 +62,7 @@
             </li>
             {{/if}}
             {{#unless logged_in}}
+            <li><a href="/cryptid">Library</a></li>
             <li><a href="/login">Login</a></li>
             <li><a href="/signup">Signup</a></li>
             {{/unless}}
