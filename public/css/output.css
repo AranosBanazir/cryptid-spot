@@ -8882,6 +8882,31 @@ html:has(.drawer-open.drawer-open) {
   margin-right: 30px;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -8892,6 +8917,10 @@ html:has(.drawer-open.drawer-open) {
 
 .ml-\[20px\] {
   margin-left: 20px;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .mt-2 {
@@ -10107,6 +10136,10 @@ html:has(.drawer-open.drawer-open) {
   border-width: 1px;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
 .border-x {
   border-left-width: 1px;
   border-right-width: 1px;
@@ -10169,6 +10202,7 @@ html:has(.drawer-open.drawer-open) {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
+
 
 .bg-\[rgb\(255\2c 0\2c 0\)\] {
   --tw-bg-opacity: 1;
@@ -10943,79 +10977,6 @@ html:has(.drawer-open.drawer-open) {
       max-width: 1536px;
     }
   }
-
-  .sm\:divider-horizontal {
-    flex-direction: column;
-  }
-
-  .sm\:divider-horizontal:before {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .sm\:divider-horizontal:after {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .sm\:divider-horizontal {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    height: auto;
-    width: 1rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:divider-horizontal {
-    flex-direction: column;
-  }
-
-  .md\:divider-horizontal:before {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .md\:divider-horizontal:after {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .md\:divider-horizontal {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    height: auto;
-    width: 1rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:divider-horizontal {
-    flex-direction: column;
-  }
-
-  .lg\:divider-horizontal:before {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .lg\:divider-horizontal:after {
-    height: 100%;
-    width: 0.125rem;
-  }
-
-  .lg\:divider-horizontal {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    height: auto;
-    width: 1rem;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -11034,6 +10995,11 @@ html:has(.drawer-open.drawer-open) {
       }
     }
   }
+}
+
+.hover\:bg-sky-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 105 161 / var(--tw-bg-opacity));
 }
 
 .hover\:font-bold:hover {
