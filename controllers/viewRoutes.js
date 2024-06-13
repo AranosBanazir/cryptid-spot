@@ -83,7 +83,7 @@ router.get("/cryptid", async (req, res) => {
     res.render("cryptid-library", {
       logged_in: req.session.logged_in,
       cryptids,
-      alphabet: "abcdefghijklmnopqrsatuvwxyz".toUpperCase().split(""),
+      alphabet: "abcdefghijklmnopqrstuvwxyz".toUpperCase().split(""),
     });
   } catch (err) {
     console.log(err);
