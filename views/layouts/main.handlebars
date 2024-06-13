@@ -55,10 +55,12 @@
           </div>
           <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             {{#if logged_in}}
+            <li><a class="justify-between" href="/api/sightings">Sighting</a></li>
+            <li><a class="justify-between" href="/cryptid">Library</a></li>
+            <li><a class="justify-between" href="/api/cryptids">Cryptids</a></li>
             <li>
               <a href="/profile" class="justify-between">
                 Profile
-                <span class="badge">New</span>
               </a>
             </li>
             <li>
@@ -66,6 +68,9 @@
             </li>
             {{/if}}
             {{#unless logged_in}}
+            <li><a href="/api/sightings">Sighting</a></li>
+            <li><a href="/cryptid">Library</a></li>
+            <li><a href="/api/cryptids">Cryptids</a></li>
             <li><a href="/login">Login</a></li>
             <li><a href="/signup">Signup</a></li>
             {{/unless}}
