@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { where } = require("sequelize");
 const { Spotter } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 router.post("/", async (req, res) => {
   try {
@@ -17,6 +17,7 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  console.log(req.body)
   try {
     const spotterData = await Spotter.findOne({
       where: { username: req.body.username },
@@ -48,7 +49,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/logout", (req, res) => {
+router.post("/logout", withAuth, (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -58,7 +59,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   const spotter = await Spotter.findByPk(req.session.spotter_id,{
     attributes:{
       exclude: ['password']
@@ -68,7 +69,7 @@ router.get("/", async (req, res) => {
   res.status(200).json(spotter)
 });
 
-
+//This route exitsts to check existing spotters
 router.get("/:username", async (req, res) => {
 
   const spotter = await Spotter.findOne({
@@ -95,7 +96,8 @@ router.put("/update", async (req, res) => {
   const spotter = await Spotter.update(
     spotterData
     ,{
-    where : {id}
+    where : {id},
+    individualHooks: true
   })
   res.status(200).send('Spotter updated succesfully')
 })

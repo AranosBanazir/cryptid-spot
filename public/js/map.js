@@ -53,9 +53,11 @@ const setMarker = async (lat, lon, cryptid, spottedDate = "at some point.", spot
   });
 
     const contentStr = `
-    <img src='${img}' class='rounded'>
+    <div class='container bg-slate-600 min-h-[500px]'>
     <p class='text-black text-xl'>${content}</p>
     <h2 style='font-size: 12px;' class='text-black'>${spotter} spotted ${cryptid} here on ${spottedDate}</h2>
+    <img src='${img}' class='rounded h-[200px] w-[200px] alt='image of ${cryptid}''>
+    </div>
     `
 
 

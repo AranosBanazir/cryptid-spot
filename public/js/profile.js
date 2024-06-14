@@ -1,4 +1,6 @@
 const cryptidForm = document.getElementById('cryptid-create-form')
+const sightingsContainer = document.querySelector('#sightings-container')
+
 
 let cryptidImage = '';
 
@@ -74,3 +76,21 @@ document.getElementById("upload-btn").addEventListener(
   },
   false
 );
+
+
+const handleDelete = async (e) =>{
+  if (e.target.localName !== 'button') return
+  const id = e.target.dataset.id
+  await fetch(`/api/sightings/${id}`, {
+    method: 'DELETE'
+  })
+  .then(res=>{
+    if (res.status === 200){
+      location.reload()
+    }
+  })
+
+  console.log()
+}
+
+sightingsContainer.addEventListener('click', handleDelete)

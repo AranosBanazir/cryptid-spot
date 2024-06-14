@@ -1,8 +1,9 @@
 const router = require('express').Router();
+const withAuth = require('../../utils/auth')
 const { Op } = require('sequelize');
 const { Spotter, Cryptid, Sighting } = require('../../models');
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     const spotter_id = req.session.spotter_id
     const {name, description, region, image} = req.body
     const validatedName = name.charAt(0).toUpperCase() + name.slice(1)
