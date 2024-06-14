@@ -8,7 +8,8 @@
     "build:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --minify",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx nodemon server.js",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "postinstall": "npm run build:css"
   },
   "keywords": [],
   "author": "",
