@@ -2,22 +2,34 @@ const router = require("express").Router();
 const { Spotter, Cryptid, Sighting } = require("../models");
 const withAuth = require("../utils/auth");
 const { Op } = require("sequelize");
+const path = require('path')
+const fs = require('fs/promises')
+const avatarDir = path.join(__dirname, '..', 'public', 'images', 'avatars')
+
+
+async function getCommonData(req){
+  const id = req.session.spotter_id
+  let profile
+  if (id){
+    const profileData = await Spotter.findByPk(id, {
+      attributes: { exclude: ["password"] },
+    });
+
+     profile = profileData.get({ plain: true });
+  }
+
+  const logged_in = req.session.logged_in
+
+  return {profile, logged_in}
+}
 
 router.get("/", async (req, res) => {
   try {
-    const id = req.session.spotter_id
-    let profile
-    if (id){
-      const profileData = await Spotter.findByPk(id, {
-        attributes: { exclude: ["password"] },
-      });
+    const commonData = await getCommonData(req)
   
-       profile = profileData.get({ plain: true });
-    }
     res.render("homepage", {
-      logged_in: req.session.logged_in,
+      ...commonData,
       GKEY: process.env.GKEY,
-      profile
     });
   } catch (err) {
     console.log(err)
@@ -45,10 +57,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/profile", withAuth, async (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect("/");
-    return;
-  }
+
 
   try {
     const id = req.session.spotter_id;
@@ -73,13 +82,15 @@ router.get("/profile", withAuth, async (req, res) => {
 
 router.get("/cryptid-library", async (req, res) => {
   console.log(req.query);
+  let profile
   try {
     const id = req.session.spotter_id;
     const profileData = await Spotter.findByPk(id, {
       attributes: { exclude: ["password"] },
     });
 
-    const profile = profileData.get({ plain: true });
+
+     profile = profileData.get({ plain: true }) ? profileData.get({ plain: true }) : profile;
    
 
 
@@ -105,6 +116,7 @@ router.get("/cryptid-library", async (req, res) => {
 
 router.get("/cryptid/:id", async (req, res) => {
   try {
+    const commonData = await getCommonData(req)
     const id = req.params.id;
     const cryptiddata = await Cryptid.findByPk(id, {
       include: {
@@ -115,8 +127,8 @@ router.get("/cryptid/:id", async (req, res) => {
     const cryptid = cryptiddata.get({ plain: true });
     console.log(cryptid);
     res.render("cryptid", {
+      ...commonData,
       cryptid,
-      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).send("Server error");
@@ -133,6 +145,9 @@ router.get("/new/sighting", withAuth, (req, res) => {
 
 router.get('/profile/settings', withAuth, async (req, res)=>{
 
+  const avatarFiles = await fs.readdir(avatarDir)
+  console.log(avatarFiles)
+
   try {
     const id = req.session.spotter_id;
     const profileData = await Spotter.findByPk(id, {
@@ -145,6 +160,7 @@ router.get('/profile/settings', withAuth, async (req, res)=>{
     res.render("profile-settings", {
       profile,
       logged_in: req.session.logged_in,
+      avatarFiles
     });
   } catch (err) {
     console.log(req.session);

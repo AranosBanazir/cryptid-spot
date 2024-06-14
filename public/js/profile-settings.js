@@ -10,16 +10,17 @@ const form       = document.querySelector('#profile-settings')
 const alertDiv = document.querySelector('#alert-div')
 const errMsg = document.querySelector('#err-msg')
 
-const avatars = [
-    'alien',
-    'bigfoot',
-    'biggerfoot',
-    'default',
-    'frankenstein',
-    'ghost',
-    'ufo',
-    'veysel'
-]
+// const avatars = [
+//     'alien',
+//     'bigfoot',
+//     'biggerfoot',
+//     'default',
+//     'frankenstein',
+//     'ghost',
+//     'ufo',
+//     'veysel',
+//     'archmage'
+// ]
 
 
 
@@ -54,7 +55,7 @@ const renderAvatars = () =>{
         avatarBox.classList.add('w-[50px]')
         avatarBox.classList.add('h-[50px]')
         avatarBox.classList.add('m-3')
-        avatarImg.setAttribute('src', `/images/avatars/${avatar}.png`)
+        avatarImg.setAttribute('src', `/images/avatars/${avatar}`)
         avatarImg.setAttribute('alt', `an avatar of a ${avatar}`)
 
 
@@ -77,7 +78,7 @@ const errorAlert = (msg) =>{
 
 const avatarChange = ( e ) =>{
     e.preventDefault()
-    
+    if (!e.target.matches('img')) return
     profile.avatar = e.target.attributes.src.textContent
     avatar.src = e.target.attributes.src.textContent
     
