@@ -5,7 +5,6 @@ const { Op } = require("sequelize");
 
 router.get("/", async (req, res) => {
   try {
-    console.log(req.session)
     const id = req.session.spotter_id
     let profile
     if (id){
@@ -45,7 +44,7 @@ router.get("/login", (req, res) => {
   });
 });
 
-router.get("/profile", async (req, res) => {
+router.get("/profile", withAuth, async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/");
     return;
@@ -72,9 +71,19 @@ router.get("/profile", async (req, res) => {
   }
 });
 
-router.get("/cryptid", async (req, res) => {
+router.get("/cryptid-library", async (req, res) => {
   console.log(req.query);
   try {
+    const id = req.session.spotter_id;
+    const profileData = await Spotter.findByPk(id, {
+      attributes: { exclude: ["password"] },
+    });
+
+    const profile = profileData.get({ plain: true });
+   
+
+
+
     const char = req.query.letter;
     const cryptidData = await Cryptid.findAll({
       where: {
@@ -85,6 +94,7 @@ router.get("/cryptid", async (req, res) => {
     res.render("cryptid-library", {
       logged_in: req.session.logged_in,
       cryptids,
+      profile,
       alphabet: "abcdefghijklmnopqrstuvwxyz".toUpperCase().split(""),
     });
   } catch (err) {
@@ -113,7 +123,7 @@ router.get("/cryptid/:id", async (req, res) => {
   }
 });
 
-router.get("/new/sighting", (req, res) => {
+router.get("/new/sighting", withAuth, (req, res) => {
   res.render("new-sighting", {
     logged_in: req.session.logged_in,
     GKEY: process.env.GKEY,
@@ -121,11 +131,7 @@ router.get("/new/sighting", (req, res) => {
 });
 
 
-router.get('/profile/settings', async (req, res)=>{
-  if (!req.session.logged_in) {
-    res.redirect("/");
-    return;
-  }
+router.get('/profile/settings', withAuth, async (req, res)=>{
 
   try {
     const id = req.session.spotter_id;
