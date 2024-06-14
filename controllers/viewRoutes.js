@@ -90,7 +90,9 @@ router.get("/cryptid-library", async (req, res) => {
     });
 
 
-     profile = profileData.get({ plain: true }) ? profileData.get({ plain: true }) : profile;
+    if (profileData){
+      profile = profileData.get({plain: true})
+    }
    
 
 
