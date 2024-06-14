@@ -10280,6 +10280,13 @@ html:has(.drawer-open.drawer-open) {
   background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
 
+
+.bg-slate-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+}
+
+
 .bg-success {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-su,oklch(var(--su)/var(--tw-bg-opacity)));

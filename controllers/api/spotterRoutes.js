@@ -1,14 +1,33 @@
 const router = require("express").Router();
 const { Spotter } = require("../../models");
 const withAuth = require("../../utils/auth");
+const { Op } = require('sequelize')
 
 router.post("/", async (req, res) => {
   try {
-    const userCheck = await Spotter.findAll({where: {username: req.body.username}})
-    if (userCheck) {
-      res.status(302).send()
-      return 
-    } 
+    let userCheck = await Spotter.findAll({
+      where: {
+        [Op.or]: [
+          {
+            username: req.body.username
+          },
+          {
+            email: req.body.email
+          }
+        ]
+      }
+    })
+
+      const users = userCheck.map(user=>user.get({plain: true}))
+
+      if (users.length){
+        res.status(302).send()
+        return
+      }
+      
+
+
+
     const createSpotter = await Spotter.create(req.body);
     req.session.save(() => {
       req.session.spotter_id = createSpotter.dataValues.id;
