@@ -24,6 +24,7 @@
     * PostgreSQL
     * Handlebars
     * Google Maps API
+    * Cloudinary API
 
 ## Credits
 * This project was made with collaboration from [Jacob Ramusson](https://github.com/JakeRasmusson), [Larry Logan](https://github.com/LerieLogin) and [Veysel Arslan](https://github.com/veyselarslan12) who both added greatly to the project.

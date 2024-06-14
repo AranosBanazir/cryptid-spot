@@ -1,3 +1,13 @@
+const params = new URLSearchParams(window.location.search)
+const loginsuccessful = params.get('loginsuccessful')
+console.log(loginsuccessful)
+function showModal() {
+  document.getElementById('success-modal').checked = true;
+}
+if (loginsuccessful){
+  showModal()
+}
+// Map stuff is below
 let map;
 let sightings
 
