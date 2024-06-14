@@ -103,10 +103,32 @@ const myWidget = cloudinary.createUploadWidget(
   {
     cloudName: cloudName,
     uploadPreset: uploadPreset,
-    showAdvancedOptions: true, 
+    showAdvancedOptions: true,
+    maxImageWidth: 1000,
     sources: ["local", "url", "camera"],
     multiple: false,
-    theme: "purple", 
+    theme: "purple",
+    styles:{
+      palette: {
+        window: "dimgrey",
+        windowBorder: "black",
+        tabIcon: "black",
+        menuIcons: "black",
+        textDark: "#000000",
+        textLight: "#FFFFFF",
+        link:  "cyan",
+        action:  "#FF620C",
+        inactiveTabIcon: "#0E2F5A",
+        error: "#F44235",
+        inProgress: "#0078FF",
+        complete: "#20B832",
+        sourceBg: "black"
+      },
+      frame: {
+        background: "dimgrey"
+      },
+   
+  } 
   },
   (error, result) => {
     if (!error && result && result.event === "success") {

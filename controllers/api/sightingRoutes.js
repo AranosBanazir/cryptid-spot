@@ -1,7 +1,8 @@
 const router = require("express").Router();
+const withAuth = require('../../utils/auth')
 const { Spotter, Cryptid, Sighting } = require("../../models");
 
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   const newSighting = {
     spotter_id: req.session.spotter_id,
     ...req.body,
@@ -65,5 +66,18 @@ router.get("/cryptid/:id", async (req, res) => {
     res.status(400).send("Server error retrieving Sightings");
   }
 });
+
+router.delete('/:id', withAuth, async (req, res)=>{
+  const id = req.params.id
+
+  await Sighting.destroy({
+    where:{
+      id,
+      spotter_id: req.session.spotter_id
+    }
+  })
+  res.status(200).json({message: 'Deleted Post'})
+})
+
 
 module.exports = router;

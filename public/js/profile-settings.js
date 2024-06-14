@@ -114,6 +114,11 @@ const handleUpdate = async (e) =>{
         },
         body: JSON.stringify(profile)
     })
+    .then((res)=>{
+        if (res.status === 200){
+            location.href = '/profile'
+        }
+    })
 }
 
 

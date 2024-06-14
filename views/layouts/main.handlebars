@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Registry</title>
+  <title>Cryptid Spotter</title>
   <link rel="stylesheet" href="/css/output.css" />
   {{#if GKEY}}
   <script loading="async" src="https://maps.googleapis.com/maps/api/js?key={{GKEY}}&loading=async">
@@ -24,7 +24,7 @@
       <div class="flex-none">
         {{#if logged_in}}
         <ul>
-          <a class="btn mx-2" href="/cryptid">Library</a>
+          <a class="btn mx-2" href="/cryptid-library">Library</a>
           <a class="btn mx-2" href="/profile">Profile</a>
           <a class="btn mx-2" href="/profile/settings">Settings</a>
           <a class="btn mx-2" id="logout">Logout</a>
@@ -33,7 +33,7 @@
         {{/if}}
         {{#unless logged_in}}
         <ul>
-          <a class="btn mx-2" href="/cryptid">Library</a>
+          <a class="btn mx-2" href="/cryptid-library">Library</a>
           <a class="btn mx-2" href="/signup">Signup</a>
           <a class="btn mx-2" href="/login">Login</a>
         
@@ -86,7 +86,7 @@
           </div>
           <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             {{#if logged_in}}
-            <li><a class="justify-between" href="/cryptid">Library</a></li>
+            <li><a class="justify-between" href="/cryptid-library">Library</a></li>
             <li>
               <a href="/profile" class="justify-between">
                 Profile
@@ -102,7 +102,7 @@
             </li>
             {{/if}}
             {{#unless logged_in}}
-            <li><a href="/cryptid">Library</a></li>
+            <li><a href="/cryptid-library">Library</a></li>
             <li><a href="/login">Login</a></li>
             <li><a href="/signup">Signup</a></li>
             {{/unless}}
