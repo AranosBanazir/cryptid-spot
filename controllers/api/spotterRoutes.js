@@ -56,7 +56,6 @@ router.post("/login", async (req, res) => {
     }
 
     const validPassword = await spotterData.checkPassword(req.body.password);
-    console.log(validPassword)
     if (!validPassword) {
       res
         .status(400)
@@ -66,7 +65,7 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.spotter_id = spotterData.id;
       req.session.logged_in = true;
-      res.status(200).send("You are now logged in!");
+      res.status(200).redirect('/')
     });
   } catch (err) {
     console.log(err);
@@ -96,7 +95,6 @@ router.get("/", withAuth, async (req, res) => {
 
 //This route exitsts to check existing spotters
 router.get("/:username", async (req, res) => {
-
   const spotter = await Spotter.findOne({
     where:{
       username: req.params.username
