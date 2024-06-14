@@ -4,11 +4,17 @@ const withAuth = require("../../utils/auth");
 
 router.post("/", async (req, res) => {
   try {
+    const userCheck = await Spotter.findAll({where: {username: req.body.username}})
+    if (userCheck) {
+      res.status(302).send()
+      return 
+    } 
     const createSpotter = await Spotter.create(req.body);
     req.session.save(() => {
       req.session.spotter_id = createSpotter.dataValues.id;
       req.session.logged_in = true;
       res.status(200).send("User created succesfully");
+      
     });
   } catch (err) {
     console.log(err);
