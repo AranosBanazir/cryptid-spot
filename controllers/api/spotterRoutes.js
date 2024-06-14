@@ -56,7 +56,7 @@ router.post("/login", async (req, res) => {
     }
 
     const validPassword = await spotterData.checkPassword(req.body.password);
-
+    console.log(validPassword)
     if (!validPassword) {
       res
         .status(400)

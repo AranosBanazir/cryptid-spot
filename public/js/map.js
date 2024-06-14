@@ -1,12 +1,5 @@
-const params = new URLSearchParams(window.location.search)
-const loginsuccessful = params.get('loginsuccessful')
-console.log(loginsuccessful)
-function showModal() {
-  document.getElementById('success-modal').checked = true;
-}
-if (loginsuccessful){
-  showModal()
-}
+
+
 // Map stuff is below
 let map;
 let sightings
@@ -14,7 +7,7 @@ let sightings
 const initMap = async (lat, lon) => {
   const position = { lat: lat, lng: lon };
   // Request needed libraries.
-  const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+  const { Map } = await google.maps.importLibrary("maps");
 
   map = new Map(document.querySelector("#map"), {
     zoom: 5,
@@ -27,7 +20,6 @@ const getMarkerLocations = async () => {
   fetch('/api/sightings')
     .then((res)=>res.json())
     .then((data)=>{
-      console.log(data)
       data.forEach(data=>{
         const formattedDate = new Date(data.createdAt).toLocaleDateString()
         setMarker(data.lat, data.lon, data.cryptid.name, formattedDate, data.spotter.username, data.image, data.content)    

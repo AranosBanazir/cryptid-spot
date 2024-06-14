@@ -9,42 +9,42 @@
         "name": "Loch Ness Monster",
         "region": "Scotland",
         "description": "Descriptions of the Loch Ness Monster vary widely, but it is commonly depicted as a large, aquatic creature with a long neck and one or more humps protruding from the water.",
-        "spotter_id": 2
+        "spotter_id": 1
     },
     {
         "name": "Chupacabra",
         "region": "Puerto Rico",
         "description": "Descriptions of the Chupacabra vary widely, but it is commonly described as a creature resembling a small, bipedal or quadrupedal reptilian or canine-like creature with spines or quills running down its back. ",
-        "spotter_id": 3
+        "spotter_id": 1
     },
     {
         "name": "Yeti",
         "region": "Nepal",
         "description": "Descriptions of the Yeti vary widely, but it is commonly depicted as a large, ape-like or bear-like creature covered in shaggy fur, perfectly adapted to its cold mountain habitat.",
-        "spotter_id": 4
+        "spotter_id": 1
     },
     {
         "name": "Kraken",
         "region": "North Atlantic Ocean",
         "description": "Descriptions of the Kraken vary widely, but it is commonly depicted as a colossal cephalopod-like creature with multiple long tentacles and a massive, bulbous head. ",
-        "spotter_id": 5
+        "spotter_id": 1
     },
     {
         "name": "Skinwalker",
         "region": "Colorado",
         "description": "Descriptions of the Skinwalker vary, but it is commonly depicted as a malevolent shape-shifter or witch capable of assuming the form of animals or other people.",
-        "spotter_id": 6
+        "spotter_id": 1
     },
     {
         "name": "Wendigo",
         "region": "Canada",
         "description": "Descriptions of the Wendigo vary, but it is commonly depicted as a malevolent and supernatural being associated with cannibalism, greed, and the harsh winter wilderness.",
-        "spotter_id": 7
+        "spotter_id": 1
     },
     {
         "name": "Dover Demon",
         "region": "England",
         "description": "The Dover Demon is typically described as being about 3 to 4 feet tall, with a hairless, peach-colored body and large, glowing eyes that are often described as orange or green. Its head is said to be disproportionately large compared to its body, with long, spindly fingers and a gaunt, alien-like appearance.",
-        "spotter_id": 8
+        "spotter_id": 1
     }
 ]
