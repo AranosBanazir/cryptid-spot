@@ -13,6 +13,13 @@
 * The server will be running at `http://localhost:3001`
 * Use Insomnia or any other API client to test the API endpoints.
 
+## Application Page
+* ![main-page](./public/images/application%20page/main-page.png)
+* ![library-page](./public/images/application%20page/library.page.png)
+* ![add-cryptid-page](./public/images/application%20page/add-cryptid.png)
+* ![new-sighting-page](./public/images/application%20page/new-sighting.png)
+* ![profile-page](./public/images/application%20page/profile.png)
+
 ## Technologies Used
 * Front-End 
     * HTML, CSS, Javascript, DaisyUI
