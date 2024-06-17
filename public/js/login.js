@@ -12,7 +12,7 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/?loginsuccessful=true');
+      location.reload()
     } else {
       showModal()
     }
